@@ -1,0 +1,88 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earth's Core Facts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Earth's Core Facts</h1>
+        <div id="fact-display">
+            <p id="current-fact">Click the button to learn a fact about Earth's core!</p>
+        </div>
+        <button id="next-fact">Next Fact</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+#fact-display {
+    min-height: 100px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+// script.js
+const facts = [
+    "The Earth's inner core is growing by about 1mm in diameter each year.",
+    "The inner core is as hot as the surface of the Sun (~5,400°C).",
+    "The core's pressure is equal to 40,000 Eiffel Towers.",
+    "The inner core spins faster than the rest of the planet.",
+    "The inner core is 88% iron."
+    // Add more facts as needed
+];
+
+let currentFactIndex = -1;
+
+document.getElementById('next-fact').addEventListener('click', () => {
+    currentFactIndex = (currentFactIndex + 1) % facts.length;
+    const factDisplay = document.getElementById('current-fact');
+    factDisplay.textContent = facts[currentFactIndex];
+    
+    // Add fade effect
+    factDisplay.style.opacity = 0;
+    setTimeout(() => {
+        factDisplay.style.opacity = 1;
+    }, 50);
+});
